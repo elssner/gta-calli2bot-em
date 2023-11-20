@@ -16,9 +16,6 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     calli2bot.pause(calli2bot.calli2bot_ePause(calli2bot.ePause.p5))
     Calli2bot.i2cRESET_OUTPUTS()
 })
-input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
-	
-})
 let Calli2bot: calli2bot.Calli2bot = null
 Calli2bot = calli2bot.beimStart(calli2bot.calli2bot_eADDR(calli2bot.eADDR.CB2_x22))
 basic.showIcon(IconNames.Angry)
