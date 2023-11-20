@@ -7,15 +7,15 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
 	
 })
 let Calli2bot: calli2bot.Calli2bot = null
-Calli2bot = calli2bot.beimStart(calli2bot.eADDR.CB2_x22)
+Calli2bot = calli2bot.beimStart(calli2bot.calli2bot_eADDR(calli2bot.eADDR.CB2_x22))
 basic.forever(function () {
     Calli2bot.setMotoren2(100, 100)
-    basic.pause(10000)
+    calli2bot.pause(calli2bot.calli2bot_ePause(calli2bot.ePause.p10))
     Calli2bot.setMotoren2(100, 50)
     basic.pause(10000)
     Calli2bot.setMotoren2(100, 100)
     basic.pause(10000)
-    Calli2bot.setMotoren2(-53, 100)
+    Calli2bot.setMotoren2(-50, 100)
     basic.pause(1000)
     Calli2bot.setMotoren2(-100, -100)
     basic.pause(1000)
