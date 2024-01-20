@@ -21,20 +21,23 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Calli2bot.i2cRESET_OUTPUTS()
 })
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
-    while (Calli2bot.seite9Linienfolger(100, 50, 10)) {
+    while (true) {
     	
     }
 })
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     while (true) {
         Calli2bot.i2cReadINPUTS()
-        if (Calli2bot.bitINPUTS(calli2bot.eINPUTS.sp0)) {
+        if (Calli2bot.readLineSensor(calli2bot.eSensor.links, calli2bot.eSensorStatus.dunkel)) {
             Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
             calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
             Calli2bot.setMotoren2(50, -50)
             calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-        } else if (false) {
-        	
+        } else if (Calli2bot.readLineSensor(calli2bot.eSensor.rechts, calli2bot.eSensorStatus.dunkel)) {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+            Calli2bot.setMotoren2(-50, 50)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
         } else {
             Calli2bot.setMotor(calli2bot.eMotor.beide, 50)
         }

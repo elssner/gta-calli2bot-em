@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "calli2bot": "github:calliope-net/calli2bot#v1.1.5",
+        "calli2bot": "github:calliope-net/calli2bot#v1.2.0",
         "v2": "*"
     },
     "files": [
@@ -22,5 +22,5 @@
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
