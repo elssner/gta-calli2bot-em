@@ -21,29 +21,21 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Calli2bot.i2cRESET_OUTPUTS()
 })
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
+    calli2bot.comment("Linienfolger")
     while (true) {
-    	
-    }
-})
-input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
-    while (true) {
-        Calli2bot.i2cReadINPUTS()
-        if (Calli2bot.readLineSensor(calli2bot.eSensor.links, calli2bot.eSensorStatus.dunkel)) {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-            Calli2bot.setMotoren2(50, -50)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-        } else if (Calli2bot.readLineSensor(calli2bot.eSensor.rechts, calli2bot.eSensorStatus.dunkel)) {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-            Calli2bot.setMotoren2(-50, 50)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+        if (calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.dunkel) && calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.dunkel)) {
+            calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, 50)
+        } else if (calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.dunkel) && calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.hell)) {
+            calliBot2.motorStop(C2Motor.links, C2Stop.Frei)
+            calliBot2.motor(C2Motor.rechts, C2Dir.vorwaerts, 40)
         } else {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 50)
+            calliBot2.motor(C2Motor.links, C2Dir.vorwaerts, 40)
+            calliBot2.motorStop(C2Motor.rechts, C2Stop.Frei)
         }
     }
 })
-input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function () {
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    calli2bot.comment("eingesperrt")
     while (true) {
         if (calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.dunkel)) {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen)
@@ -59,6 +51,24 @@ input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function
             basic.pause(500)
         } else {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, 50)
+        }
+    }
+})
+input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function () {
+    while (true) {
+        Calli2bot.i2cReadINPUTS()
+        if (Calli2bot.readLineSensor(calli2bot.eSensor.links, calli2bot.eSensorStatus.dunkel)) {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+            Calli2bot.setMotoren2(50, -50)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+        } else if (Calli2bot.readLineSensor(calli2bot.eSensor.rechts, calli2bot.eSensorStatus.dunkel)) {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+            Calli2bot.setMotoren2(-50, 50)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+        } else {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 50)
         }
     }
 })

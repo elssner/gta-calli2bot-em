@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "calli2bot": "github:calliope-net/calli2bot#v1.2.0",
+        "calli2bot": "github:calliope-net/calli2bot#v1.2.1",
         "v2": "*"
     },
     "files": [
@@ -22,5 +22,14 @@
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "blocksprj",
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "partial_flashing": 0
+                }
+            }
+        }
+    }
 }
