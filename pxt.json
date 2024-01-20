@@ -1,10 +1,11 @@
 {
-    "name": "calli2bot-em",
+    "name": "gta-calli2bot-em-62",
     "version": "0.1.0",
     "description": "",
     "dependencies": {
         "core": "*",
-        "calli2bot": "github:calliope-net/calli2bot#v1.1.4"
+        "calli2bot": "github:calliope-net/calli2bot#v1.1.5",
+        "v2": "*"
     },
     "files": [
         "main.blocks",
@@ -21,5 +22,5 @@
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }

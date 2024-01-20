@@ -1,3 +1,7 @@
+function gtacalli2botem62 () {
+    calli2bot.comment("1 Erweiterung laden:")
+    calli2bot.comment("calliope-net/calli2bot")
+}
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Calli2bot.setRgbLed3(0xa300ff, true, false, false, true, false)
     Calli2bot.setRgbLed3(0x00ffdc, false, true, true, false, false)
