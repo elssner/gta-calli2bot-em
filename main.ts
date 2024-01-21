@@ -1,4 +1,5 @@
-function gtacalli2botem62 () {
+function GitHub () {
+    calli2bot.comment("elssner/gta-calli2bot-em-62")
     calli2bot.comment("1 Erweiterung laden:")
     calli2bot.comment("calliope-net/calli2bot")
 }
