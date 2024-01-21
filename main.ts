@@ -54,6 +54,9 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
         }
     }
 })
+input.onButtonEvent(Button.A, input.buttonEventValue(ButtonEvent.Hold), function () {
+    basic.showNumber(Calli2bot.i2cReadPOWER())
+})
 input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function () {
     while (true) {
         Calli2bot.i2cReadINPUTS()
