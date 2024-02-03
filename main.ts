@@ -1,3 +1,28 @@
+input.onButtonEvent(Button.A, input.buttonEventValue(ButtonEvent.LongClick), function () {
+    basic.showNumber(Calli2bot.i2cReadPOWER())
+})
+input.onButtonEvent(Button.AB, input.buttonEventValue(ButtonEvent.LongClick), function () {
+    encoder = Calli2bot.encoderValue()
+    basic.showString("" + encoder[0] + "-" + encoder[1])
+})
+input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.LongClick), function () {
+    while (true) {
+        Calli2bot.i2cReadINPUTS()
+        if (Calli2bot.readLineSensor(calli2bot.eSensor.links, calli2bot.eSensorStatus.dunkel)) {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+            Calli2bot.setMotoren2(50, -50)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+        } else if (Calli2bot.readLineSensor(calli2bot.eSensor.rechts, calli2bot.eSensorStatus.dunkel)) {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+            Calli2bot.setMotoren2(-50, 50)
+            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
+        } else {
+            Calli2bot.setMotor(calli2bot.eMotor.beide, 50)
+        }
+    }
+})
 function GitHub () {
     calli2bot.comment("elssner/gta-calli2bot-em-62")
     calli2bot.comment("1 Erweiterung laden:")
@@ -55,27 +80,7 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
         }
     }
 })
-input.onButtonEvent(Button.A, input.buttonEventValue(ButtonEvent.Hold), function () {
-    basic.showNumber(Calli2bot.i2cReadPOWER())
-})
-input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function () {
-    while (true) {
-        Calli2bot.i2cReadINPUTS()
-        if (Calli2bot.readLineSensor(calli2bot.eSensor.links, calli2bot.eSensorStatus.dunkel)) {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-            Calli2bot.setMotoren2(50, -50)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-        } else if (Calli2bot.readLineSensor(calli2bot.eSensor.rechts, calli2bot.eSensorStatus.dunkel)) {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 0)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-            Calli2bot.setMotoren2(-50, 50)
-            calli2bot.pauseSekunden(calli2bot.calli2bot_ePause(calli2bot.ePause.p05))
-        } else {
-            Calli2bot.setMotor(calli2bot.eMotor.beide, 50)
-        }
-    }
-})
+let encoder: number[] = []
 let Calli2bot: calli2bot.Calli2bot = null
 Calli2bot = calli2bot.beimStart(calli2bot.calli2bot_eADDR(calli2bot.eADDR.CB2_x22))
 basic.showIcon(IconNames.Angry)
